@@ -30,7 +30,6 @@
     </div>
     <div>
       <label for="content" class="form-label">Content</label>
-
       <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="3" value="{{old('content')}}"></textarea>
       <small id="nameHelper" class="form-text text-muted">Type the content here</small>
       @error('content')

@@ -37,6 +37,7 @@ class ProjectController extends Controller
         $data['slug'] = Str::slug($request->title, '-');
 
         if ($request->has('cover_image')) {
+
             $imagePath = 'posts_images/' . $request->file('cover_image')->getClientOriginalName();
             $request->file('cover_image')->storeAs('public/', $imagePath);
             $data['cover_image'] = $imagePath;
@@ -61,7 +62,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projecs.edit', compact('project'));
     }
 
     /**
@@ -69,7 +70,19 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $data = $request->validated();
+        $data['slug'] = Str::slug($request->title, '-');
+
+        if ($request->has('cover_image')) {
+
+            Storage::delete($project->cover_image);
+
+            $imagePath = 'posts_images/' . $request->file('cover_image')->getClientOriginalName();
+            $request->file('cover_image')->storeAs('public/', $imagePath);
+            $data['cover_image'] = $imagePath;
+        }
+        $project->update($data);
+        return to_route('admin.projects.index', $project)->with('message', 'creato');
     }
 
     /**

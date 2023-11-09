@@ -16,7 +16,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projecs = Project::all();
+        $projecs = Project::orderBy('id', 'desc')->get();
+
         return view('admin.projecs.index', compact('projecs'));
     }
 
@@ -90,6 +91,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        if (!is_null($project->posts_images)) {
+            Storage::delete($project->posts_images);
+        }
+        $project->delete();
+        return to_route('admin.projects.index')->with('message', 'creato');
     }
 }

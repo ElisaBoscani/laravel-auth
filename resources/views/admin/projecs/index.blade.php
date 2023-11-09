@@ -33,12 +33,16 @@
         </td>
         <td>
 
-          @if (($projec->cover_image))
+          @if (str_contains($projec->cover_image, 'http'))
           <img class="w-100" src="{{ $projec->cover_image }}" alt="">
 
           @else
-          Not
+          <img class="w-100" src="{{ asset('storage/' . $projec->cover_image) }}" alt="">
           @endif
+        </td>
+        <td>
+          <a href="{{route('admin.projects.show', $projec->id)}}">Show</a>
+          <a href="{{route('admin.projects.edit', $projec->id)}}">Edit</a>
         </td>
 
 

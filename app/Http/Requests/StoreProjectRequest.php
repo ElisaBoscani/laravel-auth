@@ -23,8 +23,17 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'title' => 'required|nullable|max:50',
-            'content' => 'nullable',
+            'content' => 'required|nullable',
             'cover_image' => 'nullable|max:255',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'title.required' => 'Title is required.',
+            'content.required' => 'Description is required',
+
+
         ];
     }
 }

@@ -2,18 +2,45 @@
 
 
 @section('content')
+<h1>Create</h1>
+@if($errors->any())
+<div class="alert alert-danger" role="alert">
+  <ul>
+    @foreach($errors->all() as $error)
+    <li>{{$error}}</li>
+    @endforeach
+  </ul>
+</div>
+@endif
 <div class="container">
   <form action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div>
       <label for="title" class="form-label">Title</label>
-      <input type="text" class="form-control " name=" title" id="title" aria-describedby="helpId" placeholder="Title" value="{{old('title')}}">
+      <input type="text" class="form-control @error('title') is-invalid @enderror" name=" title" id="title" aria-describedby="helpId" placeholder="Title" value="{{old('title')}}">
       <small id="nameHelper" class="form-text text-muted">Type the name here</small>
+      @error('title')
+      <div class="alert alert-danger d-flex align-items-center" role="alert">
+        <i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ff0f0f;"></i>
+        <span>
+          Name, Error: {{$message}}
+        </span>
+      </div>
+      @enderror
     </div>
     <div>
       <label for="content" class="form-label">Content</label>
-      <input type="text" class="form-control " name=" content" id="content" aria-describedby="helpId" placeholder="Title" value="{{old('content')}}">
+
+      <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="3" value="{{old('content')}}"></textarea>
       <small id="nameHelper" class="form-text text-muted">Type the content here</small>
+      @error('content')
+      <div class="alert alert-danger d-flex align-items-center" role="alert">
+        <i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ff0f0f;"></i>
+        <span>
+          Name, Error: {{$message}}
+        </span>
+      </div>
+      @enderror
     </div>
     <div class="mb-3">
       <label for="cover_image" class="form-label">Choose file</label>

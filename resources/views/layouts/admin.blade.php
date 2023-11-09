@@ -77,6 +77,7 @@
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
                             </li>
+                            <li><a href="{{route('admin.projects.index')}}">Lista</a></li>
 
                         </ul>
 

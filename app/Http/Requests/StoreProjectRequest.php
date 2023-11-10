@@ -25,6 +25,8 @@ class StoreProjectRequest extends FormRequest
             'title' => 'required|nullable|max:50',
             'content' => 'required|nullable',
             'cover_image' => 'nullable|max:255',
+            'url_git' => 'required|nullable',
+            'url_view' => 'nullable',
         ];
     }
     public function messages()
@@ -32,7 +34,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'title.required' => 'Title is required.',
             'content.required' => 'Description is required',
-
+            'url_git.require' => 'url in required',
 
         ];
     }

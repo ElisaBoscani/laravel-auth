@@ -35,12 +35,15 @@
           {{$projec->content}}
         </td>
         <td>
-
+          @if ($projec->cover_image)
           @if (str_contains($projec->cover_image, 'http'))
           <img class="w-100" src="{{ $projec->cover_image }}" alt="">
 
           @else
           <img class="w-100" src="{{ asset('storage/' . $projec->cover_image) }}" alt="">
+          @endif
+          @else
+          N/A
           @endif
         </td>
         <td>
@@ -96,9 +99,11 @@
 
       </tr>
       @endforeach
-      {{$projecs->links('pagination::bootstrap-5')}}
+
     </tbody>
+
   </table>
+  {{$projecs->links('pagination::bootstrap-5')}}
 </div>
 
 @endsection

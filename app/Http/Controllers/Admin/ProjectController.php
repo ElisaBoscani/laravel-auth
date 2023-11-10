@@ -43,6 +43,7 @@ class ProjectController extends Controller
             $request->file('cover_image')->storeAs('public/', $imagePath);
             $data['cover_image'] = $imagePath;
         }
+        $data['url_view'] = $request->input('url_view');
         Project::create($data);
         return to_route('admin.projects.index')->with('message', 'creato');
     }
@@ -76,12 +77,13 @@ class ProjectController extends Controller
 
         if ($request->has('cover_image')) {
 
-            Storage::delete($project->cover_image);
+
 
             $imagePath = 'posts_images/' . $request->file('cover_image')->getClientOriginalName();
             $request->file('cover_image')->storeAs('public/', $imagePath);
             $data['cover_image'] = $imagePath;
         }
+
         $project->update($data);
         return to_route('admin.projects.index', $project)->with('message', 'creato');
     }

@@ -29,6 +29,28 @@
       </div>
       @enderror
     </div>
+    <!-- url git -->
+    <div>
+      <label for="url_git" class="form-label">Url Git</label>
+      <input type="text" class="form-control @error('url_git') is-invalid @enderror" name=" url_git" id="url_git" aria-describedby="helpId" placeholder="Title" value="{{$project->url_git}}">
+      <small id="nameHelper" class="form-text text-muted">Type the name here</small>
+      @error('url_git')
+      <div class="alert alert-danger d-flex align-items-center" role="alert">
+        <i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ff0f0f;"></i>
+        <span>
+          Name, Error: {{$message}}
+        </span>
+      </div>
+      @enderror
+    </div>
+    <!-- url view -->
+    <div>
+      <label for="url_view" class="form-label">Url Vuew</label>
+      <input type="text" class="form-control" name=" url_git" id="url_git" aria-describedby="helpId" placeholder="Title" value="{{$project->url_view}}">
+      <small id="nameHelper" class="form-text text-muted">Type the name here</small>
+
+    </div>
+    <!-- content -->
     <div>
       <label for="content" class="form-label">Content</label>
       <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="3">{{ old('content', $project->content) }}</textarea>

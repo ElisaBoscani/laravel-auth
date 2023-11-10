@@ -65,10 +65,10 @@
                 <td>
 
                     @if (str_contains($projec->cover_image, 'http'))
-                    <img class="w-100" src="{{ $projec->cover_image }}" alt="">
+                    <img style="width: 150px; height: 150px ;" src="{{ $projec->cover_image }}" alt="">
 
                     @else
-                    <img class="w-100" src="{{ asset('storage/' . $projec->cover_image) }}" alt="">
+                    <img style="width: 150px; height: 150px ;" src="{{ asset('storage/' . $projec->cover_image) }}" alt="">
                     @endif
                 </td>
             </tr>

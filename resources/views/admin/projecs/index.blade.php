@@ -15,6 +15,8 @@
         <th>Title</th>
         <th>Content</th>
         <th>Image</th>
+        <th>Url Git</th>
+        <th>Url View</th>
         <th>Action</th>
       </tr>
 
@@ -28,6 +30,7 @@
         <td>
           {{$projec->title}}
         </td>
+
         <td>
           {{$projec->content}}
         </td>
@@ -38,6 +41,22 @@
 
           @else
           <img class="w-100" src="{{ asset('storage/' . $projec->cover_image) }}" alt="">
+          @endif
+        </td>
+        <td>
+          @if($projec->url_git)
+          <a href=" {{$projec->url_git}}">Link to the code</a>
+
+          @else
+          N/A
+          @endif
+        </td>
+        <td>
+          @if($projec->url_view)
+          <a href="{{$projec->url_view}}">Link to the page</a>
+
+          @else
+          N/A
           @endif
         </td>
         <td>
@@ -77,6 +96,7 @@
 
       </tr>
       @endforeach
+      {{$projecs->links('pagination::bootstrap-5')}}
     </tbody>
   </table>
 </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
@@ -16,7 +16,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projecs = Project::orderBy('id', 'desc')->get();
+        $projecs = Project::orderByDesc('id')->paginate(10);
 
         return view('admin.projecs.index', compact('projecs'));
     }

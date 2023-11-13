@@ -46,7 +46,7 @@
     <!-- url view -->
     <div>
       <label for="url_view" class="form-label">Url Vuew</label>
-      <input type="text" class="form-control" name=" url_git" id="url_git" aria-describedby="helpId" placeholder="Title" value="{{$project->url_view}}">
+      <input type="text" class="form-control" name=" url_view" id="url_view" aria-describedby="helpId" placeholder="Title" value="{{$project->url_view}}">
       <small id="nameHelper" class="form-text text-muted">Type the name here</small>
 
     </div>

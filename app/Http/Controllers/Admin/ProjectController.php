@@ -75,6 +75,7 @@ class ProjectController extends Controller
         $data = $request->validated();
         $data['slug'] = Str::slug($request->title, '-');
 
+
         if ($request->has('cover_image')) {
 
 
@@ -85,7 +86,7 @@ class ProjectController extends Controller
         }
 
         $project->update($data);
-        return to_route('admin.projects.index', $project)->with('message', 'creato');
+        return to_route('admin.projects.index')->with('message', 'creato');
     }
 
     /**
